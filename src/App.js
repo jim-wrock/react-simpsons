@@ -44,38 +44,44 @@ class App extends Component {
   };
 
   render() {
+    const switchClass = this.state.working ? 'class1' : 'class2';
+    const switchClassInv = this.state.working ? 'class2' : 'class1';
+
     const isWorking = this.state.working ? 'on' : 'off';
     const HisWorking = this.state.working ? 'Homer is working' : 'Homer isn\'t working';
     return (
       <React.Fragment>
-        <div className="Lamp">
+        <body className={switchClass}>
 
-          <button
-            onClick={this.handleClick}
-            // onClick={() => alert('Button clicked')}
-            className={isWorking}
-          >
-            {isWorking.toUpperCase()}
-          </button>
+          <div className="Lamp">
 
-          {/* <button className={light}>{light.toUpperCase()}</button> */}
-          <figure className={isWorking} />
-        </div>
+            <button
+              onClick={this.handleClick}
+              // onClick={() => alert('Button clicked')}
+              className={isWorking}
+            >
+              {isWorking.toUpperCase()}
+            </button>
+
+            {/* <button className={light}>{light.toUpperCase()}</button> */}
+            <figure className={isWorking} />
+          </div>
 
 
 
-        <div className="App">
+          <div className="App">
 
-          <header className="App-header">
-            <img src={this.state.working ? logo : logo2} className="App-logo" alt="logo" />
-            <p> {HisWorking} </p>
+            <header className={switchClassInv + " App-header"}>
+              <img src={this.state.working ? logo : logo2} className="App-logo" alt="logo" />
+              <p> {HisWorking} </p>
 
-          </header>
+            </header>
 
-          <Quotes />
-          <Lamp on />
-          <Lamp />
-        </div>
+            <Quotes />
+            <Lamp on />
+            <Lamp />
+          </div>
+        </body>
       </React.Fragment>
 
     );
