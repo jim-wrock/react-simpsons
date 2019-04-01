@@ -45,6 +45,7 @@ class App extends Component {
 
   render() {
     const isWorking = this.state.working ? 'on' : 'off';
+    const HisWorking = this.state.working ? 'Homer is working' : 'Homer isn\'t working';
     return (
       <React.Fragment>
         <div className="Lamp">
@@ -67,7 +68,7 @@ class App extends Component {
 
           <header className="App-header">
             <img src={this.state.working ? logo : logo2} className="App-logo" alt="logo" />
-
+            <p> {HisWorking} </p>
 
           </header>
 
