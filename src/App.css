@@ -1,46 +1,57 @@
 .App {
-  text-align: center;
+	text-align: center;
+}
+
+.DisplayQuote {
+	padding-top: 5vh;
+	padding-bottom: 10vh;
+	text-align: center;
+}
+
+.GenerateQuote {
+	text-align: center;
+	background-color: rgb(240, 230, 94);
 }
 
 .class1 {
-  background-color: rgb(202, 65, 127)
+	background-color: rgb(202, 65, 127);
 }
 
 .class2 {
-  background-color: rgb(240, 230, 94)
+	background-color: rgb(240, 230, 94);
 }
 
 .App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  height: 40vmin;
-  pointer-events: none;
+	/* animation: App-logo-spin infinite 20s linear; */
+	height: 40vmin;
+	pointer-events: none;
 }
 
-.h1state{
-  width: 100vw;
-  color: green;
+.h1state {
+	width: 100vw;
+	color: green;
 }
-
 
 .App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	margin: 0;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }

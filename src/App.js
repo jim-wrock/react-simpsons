@@ -3,12 +3,11 @@ import logo from "./working.gif";
 import logo2 from "./notworking.gif";
 import "./App.css";
 
-import NameForm from "./NameForm";
 import Quotes from "./Quotes";
 import Lamp from "./Lamp";
 
-import GenerateEmployee from "./GenerateEmployee";
-import DisplayEmployee from "./DisplayEmployee";
+import DisplayQuote from "./DisplayQuote";
+import GenerateQuote from "./GenerateQuote";
 
 // import Quote from "./Quote";
 
@@ -37,23 +36,23 @@ import DisplayEmployee from "./DisplayEmployee";
 
 // Employee start
 
-const sampleEmployee = {
-	gender: "male",
-	name: {
-		title: "mr",
-		first: "mathys",
-		last: "aubert"
-	},
-	location: {
-		street: "9467 rue gasparin",
-		city: "perpignan",
-		postcode: "90208"
-	},
-	email: "mathys.aubert@example.com",
-	picture: {
-		medium: "https://randomuser.me/api/portraits/med/men/66.jpg"
-	}
-};
+// const sampleEmployee = {
+// 	gender: "male",
+// 	name: {
+// 		title: "mr",
+// 		first: "mathys",
+// 		last: "aubert"
+// 	},
+// 	location: {
+// 		street: "9467 rue gasparin",
+// 		city: "perpignan",
+// 		postcode: "90208"
+// 	},
+// 	email: "mathys.aubert@example.com",
+// 	picture: {
+// 		medium: "https://randomuser.me/api/portraits/med/men/66.jpg"
+// 	}
+// };
 
 // Employee end
 
@@ -62,7 +61,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			working: false,
-			employee: sampleEmployee
+			quotes: "default"
 			// Employee State init
 		};
 	}
@@ -71,14 +70,14 @@ class App extends Component {
 		this.setState({ working: !this.state.working });
 	};
 
-	getEmployee() {
+	getQuote() {
 		// Récupération de l'employé via fetch
-		fetch("https://randomuser.me/api?nat=fr")
+		fetch("https://thesimpsonsquoteapi.glitch.me/quotes")
 			.then(response => response.json())
 			.then(data => {
 				// Une fois les données récupérées, on va mettre à jour notre state avec les nouvelles données
 				this.setState({
-					employee: data.results[0]
+					quotes: data[0]
 				});
 			});
 	}
@@ -93,11 +92,14 @@ class App extends Component {
 
 		return (
 			<React.Fragment>
-				<GenerateEmployee selectEmployee={() => this.getEmployee()} />
+				{/* <GenerateEmployee selectEmployee={() => this.getEmployee()} />
+				<DisplayEmployee employee={this.state.quotes} /> */}
 
-				<DisplayEmployee employee={this.state.employee} />
-
-				<NameForm />
+				<div className={switchClass}>
+					<GenerateQuote selectQuote={() => this.getQuote()} />
+					<DisplayQuote quotes={this.state.quotes} />
+				</div>
+				{/* HOMER */}
 				<div className={switchClass}>
 					<div className="Lamp">
 						<button
