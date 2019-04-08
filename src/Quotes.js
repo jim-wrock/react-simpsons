@@ -7,19 +7,24 @@ const quotes = [
       "Facts are meaningless. You could use facts to prove anything that's even remotely true.",
     character: "Homer Simpson",
     image:
-      "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939"
+      "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FHomerSimpson.png?1497567511939",
+    key: "01"
   },
   {
     quote: "Nothing you say can upset us. We're the MTV generation.",
     character: "Bart Simpson",
     image:
       "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FBartSimpson.png?1497567511638"
+    ,
+    key: "02"
   },
   {
     quote: "That's where I saw the leprechaun...He told me to burn things.",
     character: "Ralph Wiggum",
     image:
       "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FRalphWiggum.png?1497567511523"
+    ,
+    key: "03"
   },
   {
     quote:
@@ -27,6 +32,8 @@ const quotes = [
     character: "Principal Skinner",
     image:
       "https://cdn.glitch.com/3c3ffadc-3406-4440-bb95-d40ec8fcde72%2FSeymourSkinner.png?1497567511460"
+    ,
+    key: "04"
   }
 ];
 
@@ -43,6 +50,17 @@ const Quotes = () => (
 //     {todo.text}
 //   </li>
 // );
+
+// function todoItems(arg) {
+//   arg.map((todo, index) =>
+//     // Only do this if items have no stable IDs
+//     <li key={index}>
+//       {todo.text}
+//     </li>
+//   )
+// }
+
+// todoItems(quotes)
 
 
 

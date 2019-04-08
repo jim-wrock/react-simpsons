@@ -16,6 +16,12 @@
   pointer-events: none;
 }
 
+.h1state{
+  width: 100vw;
+  color: green;
+}
+
+
 .App-header {
   min-height: 100vh;
   display: flex;

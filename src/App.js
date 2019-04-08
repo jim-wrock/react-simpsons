@@ -3,8 +3,13 @@ import logo from "./working.gif";
 import logo2 from "./notworking.gif";
 import "./App.css";
 
+import NameForm from "./NameForm";
 import Quotes from "./Quotes";
 import Lamp from "./Lamp";
+
+import GenerateEmployee from "./GenerateEmployee";
+import DisplayEmployee from "./DisplayEmployee";
+
 // import Quote from "./Quote";
 
 // class App extends Component {
@@ -30,65 +35,101 @@ import Lamp from "./Lamp";
 //   }
 // }
 
+// Employee start
+
+const sampleEmployee = {
+	gender: "male",
+	name: {
+		title: "mr",
+		first: "mathys",
+		last: "aubert"
+	},
+	location: {
+		street: "9467 rue gasparin",
+		city: "perpignan",
+		postcode: "90208"
+	},
+	email: "mathys.aubert@example.com",
+	picture: {
+		medium: "https://randomuser.me/api/portraits/med/men/66.jpg"
+	}
+};
+
+// Employee end
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      working: false
-    };
-  }
-  handleClick = () => {
-    console.log('Button clicked');
-    this.setState({ working: !this.state.working });
-  };
+	constructor(props) {
+		super(props);
+		this.state = {
+			working: false,
+			employee: sampleEmployee
+			// Employee State init
+		};
+	}
+	handleClick = () => {
+		console.log("Button clicked");
+		this.setState({ working: !this.state.working });
+	};
 
-  render() {
-    const switchClass = this.state.working ? 'class1' : 'class2';
-    const switchClassInv = this.state.working ? 'class2' : 'class1';
+	getEmployee() {
+		// Récupération de l'employé via fetch
+		fetch("https://randomuser.me/api?nat=fr")
+			.then(response => response.json())
+			.then(data => {
+				// Une fois les données récupérées, on va mettre à jour notre state avec les nouvelles données
+				this.setState({
+					employee: data.results[0]
+				});
+			});
+	}
 
-    const isWorking = this.state.working ? 'on' : 'off';
-    const HisWorking = this.state.working ? 'Homer is working' : 'Homer isn\'t working';
-    return (
-      <React.Fragment>
-        <body className={switchClass}>
+	render() {
+		const isWorking = this.state.working ? "on" : "off";
+		const HisWorking = this.state.working
+			? "Homer is working"
+			: "Homer isn't working";
+		const switchClass = this.state.working ? "class1" : "class2";
+		const switchClassInv = this.state.working ? "class2" : "class1";
 
-          <div className="Lamp">
+		return (
+			<React.Fragment>
+				<GenerateEmployee selectEmployee={() => this.getEmployee()} />
 
-            <button
-              onClick={this.handleClick}
-              // onClick={() => alert('Button clicked')}
-              className={isWorking}
-            >
-              {isWorking.toUpperCase()}
-            </button>
+				<DisplayEmployee employee={this.state.employee} />
 
-            {/* <button className={light}>{light.toUpperCase()}</button> */}
-            <figure className={isWorking} />
-          </div>
+				<NameForm />
+				<div className={switchClass}>
+					<div className="Lamp">
+						<button
+							onClick={this.handleClick}
+							// onClick={() => alert('Button clicked')}
+							className={isWorking}
+						>
+							{isWorking.toUpperCase()}
+						</button>
 
+						{/* <button className={light}>{light.toUpperCase()}</button> */}
+						<figure className={isWorking} />
+					</div>
 
+					<div className="App">
+						<header className={switchClassInv + " App-header"}>
+							<img
+								src={this.state.working ? logo : logo2}
+								className="App-logo"
+								alt="logo"
+							/>
+							<p> {HisWorking} </p>
+						</header>
 
-          <div className="App">
-
-            <header className={switchClassInv + " App-header"}>
-              <img src={this.state.working ? logo : logo2} className="App-logo" alt="logo" />
-              <p> {HisWorking} </p>
-
-            </header>
-
-            <Quotes />
-            <Lamp on />
-            <Lamp />
-          </div>
-        </body>
-      </React.Fragment>
-
-    );
-  }
+						<Quotes />
+						<Lamp on />
+						<Lamp />
+					</div>
+				</div>
+			</React.Fragment>
+		);
+	}
 }
-
-
-
 
 export default App;
